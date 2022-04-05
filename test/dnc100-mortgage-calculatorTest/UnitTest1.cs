@@ -16,7 +16,7 @@ namespace dnc100_mortgage_calculatorTest
         {
             Mortgage mortgage = new Mortgage(principal, interest, term, period);
             double expected = 10.51;
-            Assert.Equal(expected, Math.Round(mortgage.Calculate(), 2));
+            Assert.Equal(expected, Math.Round(mortgage.Calculate(principal, interest, term, period), 2));
         }
 
         [Fact]
@@ -45,15 +45,15 @@ namespace dnc100_mortgage_calculatorTest
             Assert.Equal(testCompoundedInterest, Math.Round(mortgage.CompoundedInterestRate(monthlyInterestRate, numberOfPayments), 4));
         }
 
-        [Fact]
-        public void MortgageInterestQuotient()
-        {
-            Mortgage mortgage = new Mortgage(principal, interest, term, period);
-            double monthlyInterestRate = 0.001;
-            int numberOfPayments = 100;
-            double compoundedInterest = 1.1051;
-            double testQuotient = 0.0105;
-            Assert.Equal(testQuotient, Math.Round(mortgage.InterestQuotient(monthlyInterestRate, compoundedInterest, numberOfPayments), 4));
-        }
+      //  [Fact]
+      //  public void MortgageInterestQuotient()
+      //  {
+      //      Mortgage mortgage = new Mortgage(principal, interest, term, period);
+      //      double monthlyInterestRate = 0.001;
+      //      int numberOfPayments = 100;
+      //      double compoundedInterest = 1.1051;
+      //      double testQuotient = 0.0105;
+       //     Assert.Equal(testQuotient, Math.Round(mortgage.InterestQuotient(monthlyInterestRate, compoundedInterest, numberOfPayments), 4));
+       //}
     }
 }

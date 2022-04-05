@@ -6,34 +6,43 @@ namespace dnc100_mortgage_calculator
 {
     public class Mortgage
     {
-        public Mortgage(double principle, double interest, int term, int period)
+        public Mortgage(double principal, double interest, int term, int period)
         {
-
+      
+            Calculate(principal,  interest,  term,  period);
+           
         }
 
-        public double Calculate()
-        {
-            return 0;
+        public double Calculate(double principal, double interest, int term, int period)
+        {   
+         
+             term = NumberOfPayments(term,period);
+            interest = MonthlyInterestRate(interest, period);
+            double x = CompoundedInterestRate(interest,term);
+           double mortgage = InterestQuotient(interest, x, principal);
+         
+            return mortgage;
         }
 
         public double MonthlyInterestRate(double interest, int period)
         {
-            return 0;
+         return  (interest / 100) / period;
         }
 
         public int NumberOfPayments(int term, int period)
         {
-            return 0;
+            return term * period;
         }
 
         public double CompoundedInterestRate(double monthlyInterestRate, int numberOfPayments)
         {
-            return 0;
+            return Math.Pow((1+monthlyInterestRate),numberOfPayments);
         }
 
         public double InterestQuotient(double monthlyInterestRate, double compoundedInterestRate, int numberOfPayments)
         {
-            return 0;
+            Console.WriteLine(Math.Round((numberOfPayments*(monthlyInterestRate*compoundedInterestRate)/(compoundedInterestRate-1)),2));
+            return Math.Round((numberOfPayments*(monthlyInterestRate*compoundedInterestRate)/(compoundedInterestRate-1)),2);
         }
     }
 }
