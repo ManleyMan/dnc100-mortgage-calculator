@@ -19,7 +19,7 @@ namespace dnc100_mortgage_calculator
              term = NumberOfPayments(term,period);
             interest = MonthlyInterestRate(interest, period);
             double x = CompoundedInterestRate(interest,term);
-           double mortgage = InterestQuotient(interest, x, principal);
+           double mortgage = Math.Round((principal*(interest*x)/(x-1)),2);
          
             return mortgage;
         }
@@ -40,9 +40,8 @@ namespace dnc100_mortgage_calculator
         }
 
         public double InterestQuotient(double monthlyInterestRate, double compoundedInterestRate, int numberOfPayments)
-        {
-            Console.WriteLine(Math.Round((numberOfPayments*(monthlyInterestRate*compoundedInterestRate)/(compoundedInterestRate-1)),2));
-            return Math.Round((numberOfPayments*(monthlyInterestRate*compoundedInterestRate)/(compoundedInterestRate-1)),2);
+        {   
+             return Math.Abs((monthlyInterestRate * numberOfPayments) * (1 - compoundedInterestRate));
         }
     }
 }

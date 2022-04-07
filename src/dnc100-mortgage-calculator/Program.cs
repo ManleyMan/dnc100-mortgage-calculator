@@ -6,32 +6,35 @@ namespace dnc100_mortgage_calculator
     {
         static void Main(string[] args)
         {
+            Console.WriteLine();
           //  Mortgage mortgage;
            double principal; 
            double interestRate, monthlyPayment;
             int term, period;
             // Use .WriteLine to greet the user
-            Console.WriteLine("Welcome, calculate your Mortgage Payment");
+            Console.WriteLine("Welcome, calculate your Mortgage Payment, press Enter");
             // Use a mix of WriteLine and ReadLine to obtain the mortgage attributes (Making sure to typecast)
             //  Using WriteLine write a message to user to obtain the Principal
             // Using ReadLine to capture the principal and assign it to a variable
-            Console.WriteLine("Enter the principal amount");
+           
+            Console.Write("Enter the principal amount: ");
             principal = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Enter InterestRate here");
+            Console.Write("Enter InterestRate here: ");
             interestRate = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Enter term here");
+            Console.Write("Enter term here: ");
             term = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter period here");
+            Console.Write("Enter period here: ");
             period = Convert.ToInt32(Console.ReadLine());
 
 
             // Create a new Mortgage with the given attributes;
-             monthlyPayment =  Convert.ToDouble(new Mortgage(principal, interestRate, term, period));
+             Mortgage mortgage =  new Mortgage(principal, interestRate, term, period);
 
             // Use the Mortgage functions to calculate the monthly payment
-
+             monthlyPayment = Convert.ToDouble(mortgage);
             // Use WriteLine to output the monthly payment
             Console.WriteLine($"your monthly payment would be {monthlyPayment}");
+            Console.ReadLine();
         }
     }
 }
